@@ -10,24 +10,24 @@ For instance in Slim you can do the following.
 ```php
 $container = $app->getContainer();
 $container['loginForm'] = function ($c) {
-   return (new HtmlForm())
-              ->setId("loginForm")
-              ->setMethod("post")
-              ->addChild(
-                  (new HtmlInput())
-                      ->setName("username")
-                      ->setAttributes(
-                      array(
-                          "name" => "username",
-                          "type" => "text"
-                      ))
-              )->addChild(
-                  (new HtmlInput())->setAttributes(
-                      array(
-                          "name" => "password",
-                          "type" => "password"
-                      ))
-              );
+   return (new Form())
+           ->setId("loginForm")
+           ->setMethod("post")
+           ->addChild(
+               (new Input())
+                   ->setName("username")
+                   ->setAttributes(
+                   array(
+                       "name" => "username",
+                       "type" => "text"
+                   ))
+           )->addChild(
+               (new Input())->setAttributes(
+                   array(
+                       "name" => "password",
+                       "type" => "password"
+                   ))
+           );
 };
 
 ```
