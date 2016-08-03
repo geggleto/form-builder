@@ -11,23 +11,23 @@ For instance in Slim you can do the following.
 $container = $app->getContainer();
 $container['loginForm'] = function ($c) {
    return (new HtmlForm())
-    ->setId("loginForm")
-    ->method("post")
-    ->addChildren(
-        (new HtmlInput())->setAttributes(
-        array(
-            "name" => "username",
-            "type" => "text",
-            "password" => "password"
-        ))
-    )->addChildren(
-        (new HtmlInput())->setAttributes(
-        array(
-         "name" => "password",
-         "type" => "password",
-         "password" => "password"
-        ))
-    );
+              ->setId("loginForm")
+              ->setMethod("post")
+              ->addChild(
+                  (new HtmlInput())
+                      ->setName("username")
+                      ->setAttributes(
+                      array(
+                          "name" => "username",
+                          "type" => "text"
+                      ))
+              )->addChild(
+                  (new HtmlInput())->setAttributes(
+                      array(
+                          "name" => "password",
+                          "type" => "password"
+                      ))
+              );
 };
 
 ```

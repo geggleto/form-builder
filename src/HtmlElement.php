@@ -15,12 +15,6 @@ abstract class HtmlElement
     protected $attributes;
 
     /** @var string */
-    protected $id;
-
-    /** @var string */
-    protected $name;
-
-    /** @var string */
     protected $elementType;
 
     /** @var array */
@@ -49,7 +43,9 @@ abstract class HtmlElement
      */
     public function setAttributes(array $attributes)
     {
-        $this->attributes = $attributes;
+        foreach ($attributes as $k => $v) {
+            $this->setAttribute($k, $v); //force the (string) conversion
+        }
         
         return $this;
     }
@@ -60,9 +56,18 @@ abstract class HtmlElement
      * @return $this
      */
     public function setAttribute($name, $value) {
-        $this->attributes[$name] = $value;
+        $this->attributes[(string)$name] = (string)$value;
 
         return $this;
+    }
+
+    /**
+     * @param $name
+     * 
+     * @return mixed
+     */
+    public function getAttribute($name) {
+        return $this->attributes[(string)$name];
     }
 
     /**
@@ -76,30 +81,14 @@ abstract class HtmlElement
     }
 
     /**
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
      * @param string $id
      * @return $this
      */
     public function setId($id)
     {
-        $this->id = $id;
+        $this->setAttribute('id', $id);
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -108,7 +97,7 @@ abstract class HtmlElement
      */
     public function setName($name)
     {
-        $this->name = $name;
+        $this->setAttribute('name', $name);
 
         return $this;
     }
@@ -123,7 +112,7 @@ abstract class HtmlElement
             $stringAttributes .= $name.'="'.$value.'" ';
 
         }
-        return '<'.$this->elementType.' id="'.$this->id.'" name="'.$this->name.'" '.$stringAttributes.'>';
+        return '<'.$this->elementType.' '.$stringAttributes.'>';
     }
 
     /**

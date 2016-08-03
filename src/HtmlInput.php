@@ -20,4 +20,24 @@ class HtmlInput extends HtmlElement
 
         $this->elementType = 'input';
     }
+
+    /**
+     * @return string
+     */
+    public function renderStartTag()
+    {
+        $stringAttributes = "";
+        foreach ($this->attributes as $name => $value) {
+            $stringAttributes .= $name.'="'.$value.'" ';
+
+        }
+        return '<'.$this->elementType.' '.$stringAttributes.'/>';    }
+
+    /**
+     * @return string
+     */
+    public function renderEndTag()
+    {
+        return '';
+    }
 }
