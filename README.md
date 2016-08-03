@@ -31,3 +31,67 @@ $container['loginForm'] = function ($c) {
 };
 
 ```
+
+
+### Real world Usage
+
+Replicated Bootstrap Login Form
+
+```php
+$form = (new Form())
+    ->setAttribute('class', 'form-horizontal')
+    ->addChild(
+        (new Div())
+            ->setAttribute('class', 'form-group')
+            ->addChild(
+                (new Label())
+                    ->setAttribute('for', 'inputEmail3')
+                    ->setAttribute('class', 'col-sm-2 control-label')
+                    ->setInnerHtml('Email')
+            )
+            ->addChild(
+                (new Div())
+                    ->setAttribute('class', 'col-sm-10')
+                    ->addChild( 
+                        (new Input())
+                            ->setAttribute('type', 'email')
+                            ->setAttribute('class', 'form-control')
+                            ->setAttribute('id', 'inputEmail3')
+                            ->setAttribute('placeholder', 'Email')
+                    )
+            )
+    )->addChild(
+        (new Div())
+            ->setAttribute('class', 'form-group')
+            ->addChild(
+                (new Label())
+                    ->setAttribute('for', 'inputPassword3')
+                    ->setAttribute('class', 'col-sm-2 control-label')
+                    ->setInnerHtml('Password')
+            )
+            ->addChild(
+                (new Div())
+                    ->setAttribute('class', 'col-sm-10')
+                    ->addChild(
+                        (new Input())
+                            ->setAttribute('type', 'password')
+                            ->setAttribute('class', 'form-control')
+                            ->setAttribute('id', 'inputPassword3')
+                            ->setAttribute('placeholder', 'Password')
+                    )
+            )
+    )->addChild(
+        (new Div())
+            ->setAttribute('class', 'form-group')
+            ->addChild(
+                (new Div())
+                    ->setAttribute('class', 'col-sm-offset-2 col-sm-10')
+                    ->addChild(
+                        (new Button())
+                            ->setAttribute('type', 'submit')
+                            ->setAttribute('class', 'btn btn-default')
+                            ->setInnerHtml('Sign in')
+                    )
+            )
+    );
+```
