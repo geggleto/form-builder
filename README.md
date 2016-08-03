@@ -8,6 +8,9 @@ Ideally via some form of dependency injection.
 For instance in Slim you can do the following.
 
 ```php
+use Geggleto\Forms\Form;
+use Geggleto\Forms\Input;
+
 $container = $app->getContainer();
 $container['loginForm'] = function ($c) {
    return (new Form())
@@ -38,6 +41,12 @@ $container['loginForm'] = function ($c) {
 Replicated Bootstrap Login Form
 
 ```php
+use Geggleto\Forms\Button;
+use Geggleto\Forms\Div;
+use Geggleto\Forms\Form;
+use Geggleto\Forms\Input;
+use Geggleto\Forms\Label;
+
 $form = (new Form())
     ->setAttribute('class', 'form-horizontal')
     ->addChild(
