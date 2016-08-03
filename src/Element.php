@@ -20,6 +20,9 @@ abstract class Element
     /** @var array */
     protected $children;
 
+    /** @var string */
+    protected $innerHtml;
+
     /**
      * HtmlElement constructor.
      */
@@ -27,6 +30,7 @@ abstract class Element
     {
         $this->attributes = array();
         $this->children = array();
+        $this->innerHtml = '';
     }
 
     /**
@@ -102,6 +106,16 @@ abstract class Element
         return $this;
     }
 
+    public function setInnerHtml($html) {
+        $this->innerHtml = $html;
+
+        return $this;
+    }
+
+    public function getInnerHtml() {
+        return $this->innerHtml;
+    }
+
 
     /**
      * @return string
@@ -139,7 +153,7 @@ abstract class Element
         ob_start();
 
         print $this->renderStartTag();
-
+        print $this->innerHtml;
         foreach($this->children as $child) {
             /** @var $child Element */
             print $child->render();
