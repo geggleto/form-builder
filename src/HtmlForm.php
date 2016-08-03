@@ -16,16 +16,36 @@ class HtmlForm extends HtmlElement
      */
     public function __construct()
     {
-        $this->type = 'form';
+        $this->elementType = 'form';
         $this->attributes = array();
     }
 
     /**
-     * @param $method
+     * @param string $method
      * @return $this
      */
     public function setMethod($method) {
-        $this->attributes['method'] = $method;
+        $this->setAttribute('method', $method);
+
+        return $this;
+    }
+
+    /**
+     * @param string $action
+     * @return $this
+     */
+    public function setAction($action) {
+        $this->setAttribute('action', $action);
+
+        return $this;
+    }
+
+    /**
+     * @param string $type
+     * @return $this
+     */
+    public function setType($type) {
+        $this->setAttribute('type', $type);
 
         return $this;
     }

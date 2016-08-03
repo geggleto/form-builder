@@ -21,7 +21,7 @@ abstract class HtmlElement
     protected $name;
 
     /** @var  string */
-    protected $type;
+    protected $elementType;
 
     /**
      * @return array
@@ -38,6 +38,27 @@ abstract class HtmlElement
     public function setAttributes(array $attributes)
     {
         $this->attributes = $attributes;
+        
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @param string $value
+     * @return $this
+     */
+    public function setAttribute($name, $value) {
+        $this->attributes[$name] = $value;
+
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     * @return $this
+     */
+    public function removeAttribute($name) {
+        unset($this->attributes[$name]);
 
         return $this;
     }
@@ -87,16 +108,16 @@ abstract class HtmlElement
     public function renderStartTag() {
         $stringAttributes = "";
         foreach ($this->attributes as $name => $value) {
-            $stringAttributes = $name.'="'.$value.'" ';
+            $stringAttributes .= $name.'="'.$value.'" ';
 
         }
-        return '<'.$this->type.' id="'.$this->id.'" name="'.$this->name.'" '.$stringAttributes.'>';
+        return '<'.$this->elementType.' id="'.$this->id.'" name="'.$this->name.'" '.$stringAttributes.'>';
     }
 
     /**
      * @return string
      */
     public function renderEndTag() {
-        return "</$this->type>";
+        return "</$this->elementType>";
     }
 }
