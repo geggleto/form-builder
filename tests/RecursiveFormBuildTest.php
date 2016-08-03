@@ -10,7 +10,7 @@ namespace Forms\Test;
 
 
 use Geggleto\Forms\Form;
-use Geggleto\Forms\Div;
+use Geggleto\Forms\Input;
 
 class RecursiveFormBuildTest extends \PHPUnit_Framework_TestCase
 {
@@ -19,7 +19,7 @@ class RecursiveFormBuildTest extends \PHPUnit_Framework_TestCase
             ->setId("loginForm")
             ->setMethod("post")
             ->addChild(
-                (new Div())
+                (new Input())
                     ->setName("username")
                     ->setAttributes(
                     array(
@@ -27,7 +27,7 @@ class RecursiveFormBuildTest extends \PHPUnit_Framework_TestCase
                         "type" => "text"
                     ))
             )->addChild(
-                (new Div())->setAttributes(
+                (new Input())->setAttributes(
                     array(
                         "name" => "password",
                         "type" => "password"
