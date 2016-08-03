@@ -1,0 +1,31 @@
+{
+  "name": "geggleto/forms",
+  "description": "Object Oriented Form Builder",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Glenn Eggleton",
+      "email": "geggleto@gmail.com"
+    }
+  ],
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^2.5",
+    "phpunit/phpunit": "^4.0"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "Geggleto\\Forms\\" : "src"
+    }
+  },
+  "autoload-dev" : {
+    "psr-4" : {
+      "Forms\\Test\\" : "tests"
+    }
+  },
+  "scripts": {
+    "test": [
+      "@phpunit"
+    ],
+    "phpunit": "call vendor/bin/phpunit --bootstrap tests/bootstrap.php tests"
+  }
+}
