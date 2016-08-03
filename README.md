@@ -10,7 +10,7 @@ For instance in Slim you can do the following.
 ```php
 $container = $app->getContainer();
 $container['loginForm'] = function ($c) {
-   return new (HtmlForm())
+   return (new HtmlForm())
     ->setId("loginForm")
     ->method("post")
     ->addChildren(
