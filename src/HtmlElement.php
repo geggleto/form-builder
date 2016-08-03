@@ -20,8 +20,20 @@ abstract class HtmlElement
     /** @var string */
     protected $name;
 
-    /** @var  string */
+    /** @var string */
     protected $elementType;
+
+    /** @var array */
+    protected $children;
+
+    /**
+     * HtmlElement constructor.
+     */
+    public function __construct()
+    {
+        $this->attributes = array();
+        $this->children = array();
+    }
 
     /**
      * @return array
@@ -119,5 +131,35 @@ abstract class HtmlElement
      */
     public function renderEndTag() {
         return "</$this->elementType>";
+    }
+
+    /**
+     * @param HtmlElement $element
+     * @return $this
+     */
+    public function addChild(HtmlElement $element) {
+        $this->children[] = $element;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function render() {
+        ob_start();
+
+        print $this->renderStartTag();
+
+        foreach($this->children as $child) {
+            /** @var $child HtmlElement */
+            print $child->render();
+        }
+
+        print $this->renderEndTag();
+
+        $content = ob_get_clean();
+
+        return $content;
     }
 }

@@ -51,4 +51,19 @@ class HtmlFormTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($formStartTag, $form->renderStartTag());
         $this->assertEquals('</form>', $form->renderEndTag());
     }
+
+    public function testRenderMethod() {
+        $form = (new HtmlForm())
+            ->setId('test')
+            ->setName('test')
+            ->setAttributes(array(
+                "k" => "v"
+            ))
+            ->setMethod('POST')
+            ->setAction('localhost')
+            ->setType('test');
+        
+        $renderExpect = '<form id="test" name="test" k="v" method="POST" action="localhost" type="test" ></form>';
+        $this->assertEquals($renderExpect, $form->render());
+    }
 }

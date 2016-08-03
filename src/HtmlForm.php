@@ -16,8 +16,9 @@ class HtmlForm extends HtmlElement
      */
     public function __construct()
     {
+        parent::__construct();
+        
         $this->elementType = 'form';
-        $this->attributes = array();
     }
 
     /**
