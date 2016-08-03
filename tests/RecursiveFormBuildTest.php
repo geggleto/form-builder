@@ -9,17 +9,17 @@
 namespace Forms\Test;
 
 
-use Geggleto\Forms\HtmlForm;
-use Geggleto\Forms\HtmlDiv;
+use Geggleto\Forms\Form;
+use Geggleto\Forms\Div;
 
 class RecursiveFormBuildTest extends \PHPUnit_Framework_TestCase
 {
     public function testRecursiveFormRender() {
-        $form = (new HtmlForm())
+        $form = (new Form())
             ->setId("loginForm")
             ->setMethod("post")
             ->addChild(
-                (new HtmlDiv())
+                (new Div())
                     ->setName("username")
                     ->setAttributes(
                     array(
@@ -27,7 +27,7 @@ class RecursiveFormBuildTest extends \PHPUnit_Framework_TestCase
                         "type" => "text"
                     ))
             )->addChild(
-                (new HtmlDiv())->setAttributes(
+                (new Div())->setAttributes(
                     array(
                         "name" => "password",
                         "type" => "password"

@@ -9,7 +9,7 @@
 namespace Geggleto\Forms;
 
 
-abstract class HtmlElement
+abstract class Element
 {
     /** @var array */
     protected $attributes;
@@ -123,10 +123,10 @@ abstract class HtmlElement
     }
 
     /**
-     * @param HtmlElement $element
+     * @param Element $element
      * @return $this
      */
-    public function addChild(HtmlElement $element) {
+    public function addChild(Element $element) {
         $this->children[] = $element;
 
         return $this;
@@ -141,7 +141,7 @@ abstract class HtmlElement
         print $this->renderStartTag();
 
         foreach($this->children as $child) {
-            /** @var $child HtmlElement */
+            /** @var $child Element */
             print $child->render();
         }
 

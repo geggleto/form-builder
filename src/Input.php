@@ -9,7 +9,7 @@
 namespace Geggleto\Forms;
 
 
-class HtmlInput extends HtmlElement
+class Input extends Element
 {
     /**
      * HtmlForm constructor.

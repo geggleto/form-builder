@@ -9,12 +9,12 @@
 namespace Forms\Test;
 
 
-use Geggleto\Forms\HtmlForm;
+use Geggleto\Forms\Form;
 
 class HtmlFormTest extends \PHPUnit_Framework_TestCase
 {
     public function testRender() {
-        $form = new HtmlForm();
+        $form = new Form();
         $form->setId('test');
         $form->setName('test');
 
@@ -24,7 +24,7 @@ class HtmlFormTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testRenderWithAttributes() {
-        $form = new HtmlForm();
+        $form = new Form();
         $form->setId('test');
         $form->setName('test');
         $form->setAttributes(array(
@@ -37,7 +37,7 @@ class HtmlFormTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testRenderWithAttributesAndMethodChaning() {
-        $form = (new HtmlForm())
+        $form = (new Form())
             ->setId('test')
             ->setName('test')
             ->setAttributes(array(
@@ -53,7 +53,7 @@ class HtmlFormTest extends \PHPUnit_Framework_TestCase
     }
 
     public function testRenderMethod() {
-        $form = (new HtmlForm())
+        $form = (new Form())
             ->setId('test')
             ->setName('test')
             ->setAttributes(array(

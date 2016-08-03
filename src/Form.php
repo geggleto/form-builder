@@ -9,7 +9,7 @@
 namespace Geggleto\Forms;
 
 
-class HtmlForm extends HtmlElement
+class Form extends Element
 {
     /**
      * HtmlForm constructor.

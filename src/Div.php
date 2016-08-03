@@ -9,7 +9,7 @@
 namespace Geggleto\Forms;
 
 
-class HtmlDiv extends HtmlElement
+class Div extends Element
 {
     /**
      * HtmlDiv constructor.
