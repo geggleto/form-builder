@@ -36,9 +36,9 @@ $container['loginForm'] = function ($c) {
 ```
 
 
-### Real world Usage
+## Real world Usage
 
-Replicated Bootstrap Login Form
+### Example Bootstrap Login Form
 
 ```php
 use Geggleto\Forms\Button;
@@ -105,7 +105,7 @@ $form = (new Form())
     );
 ```
 
-Or you can use the Bootstrap Helper!
+### Or you can use the Bootstrap Helper!
 ```php
 $form = (new Form())
     ->setAttribute('class', 'form-horizontal')
@@ -118,7 +118,7 @@ $form = (new Form())
     );
 ```
 
-Now if you wanted to use something like Vue.Js
+### Now if you wanted to use something like Vue.Js
 ```php
 $form = (new Form())
     ->setAttribute('class', 'form-horizontal')
@@ -131,6 +131,24 @@ $form = (new Form())
     )->addChild(
         $factory->makeButton('Sign In')
     );
+```
+
+### Or maybe you want to output the forms to html files.
+```php
+$form = (new Form())
+    ->setAttribute('class', 'form-horizontal')
+    ->addChild(
+        $factory->makeFormInput('Email', 'email', 'inputEmail3', 'Email')
+            ->setAttribute('value', '{{ model.email }}');
+    )->addChild(
+        $factory->makeFormInput('Confirm Email', 'email', 'inputEmail2', 'Email Again')
+            ->setAttribute('value', '{{ model.email_confirm }}');
+    )->addChild(
+        $factory->makeButton('Sign In')
+    );
+    
+$formHtml = $form->render();    
+//Write it to disk
 ```
 
 ## Todo
