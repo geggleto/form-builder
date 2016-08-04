@@ -105,6 +105,19 @@ $form = (new Form())
     );
 ```
 
+Or you can use the Bootstrap Helper!
+```php
+$form = (new Form())
+    ->setAttribute('class', 'form-horizontal')
+    ->addChild(
+        $factory->makeFormInput('Email', 'email', 'inputEmail3', 'Email')
+    )->addChild(
+        $factory->makeFormInput('Password', 'password', 'inputPassword3', 'Password')
+    )->addChild(
+        $factory->makeButton('Sign In')
+    );
+```
+
 ## Todo
 
 Filling out the Bootstrap Factory more
