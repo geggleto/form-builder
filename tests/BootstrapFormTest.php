@@ -9,11 +9,8 @@
 namespace Forms\Test;
 
 
-use Geggleto\Forms\Button;
-use Geggleto\Forms\Div;
+use Geggleto\Forms\Factory\Bootstrap\Factory;
 use Geggleto\Forms\Form;
-use Geggleto\Forms\Input;
-use Geggleto\Forms\Label;
 
 class BootstrapFormTest extends \PHPUnit_Framework_TestCase
 {
@@ -33,7 +30,7 @@ class BootstrapFormTest extends \PHPUnit_Framework_TestCase
 </div>
 <div class="form-group" >
 <div class="col-sm-offset-2 col-sm-10" >
-<button type="submit" class="btn btn-default" >Sign in</button>
+<button type="submit" class="btn btn-default" >Sign In</button>
 </div>
 </div>
 </form>';
@@ -41,61 +38,16 @@ class BootstrapFormTest extends \PHPUnit_Framework_TestCase
         $bootstrapForm = str_replace("\n", "", $bootstrapForm);
         $bootstrapForm = str_replace("\r", "", $bootstrapForm);
 
+        $factory = new Factory(); //bootstrap factory
+        
         $form = (new Form())
             ->setAttribute('class', 'form-horizontal')
             ->addChild(
-                (new Div())
-                    ->setAttribute('class', 'form-group')
-                    ->addChild(
-                        (new Label())
-                            ->setAttribute('for', 'inputEmail3')
-                            ->setAttribute('class', 'col-sm-2 control-label')
-                            ->setInnerHtml('Email')
-                    )
-                    ->addChild(
-                        (new Div())
-                            ->setAttribute('class', 'col-sm-10')
-                            ->addChild( 
-                                (new Input())
-                                    ->setAttribute('type', 'email')
-                                    ->setAttribute('class', 'form-control')
-                                    ->setAttribute('id', 'inputEmail3')
-                                    ->setAttribute('placeholder', 'Email')
-                            )
-                    )
+                $factory->makeFormInput('Email', 'email', 'inputEmail3', 'Email')
             )->addChild(
-                (new Div())
-                    ->setAttribute('class', 'form-group')
-                    ->addChild(
-                        (new Label())
-                            ->setAttribute('for', 'inputPassword3')
-                            ->setAttribute('class', 'col-sm-2 control-label')
-                            ->setInnerHtml('Password')
-                    )
-                    ->addChild(
-                        (new Div())
-                            ->setAttribute('class', 'col-sm-10')
-                            ->addChild(
-                                (new Input())
-                                    ->setAttribute('type', 'password')
-                                    ->setAttribute('class', 'form-control')
-                                    ->setAttribute('id', 'inputPassword3')
-                                    ->setAttribute('placeholder', 'Password')
-                            )
-                    )
+                $factory->makeFormInput('Password', 'password', 'inputPassword3', 'Password')
             )->addChild(
-                (new Div())
-                    ->setAttribute('class', 'form-group')
-                    ->addChild(
-                        (new Div())
-                            ->setAttribute('class', 'col-sm-offset-2 col-sm-10')
-                            ->addChild(
-                                (new Button())
-                                    ->setAttribute('type', 'submit')
-                                    ->setAttribute('class', 'btn btn-default')
-                                    ->setInnerHtml('Sign in')
-                            )
-                    )
+                $factory->makeButton('Sign In')
             );
 
 
