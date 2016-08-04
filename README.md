@@ -118,6 +118,21 @@ $form = (new Form())
     );
 ```
 
+Now if you wanted to use something like Vue.Js
+```php
+$form = (new Form())
+    ->setAttribute('class', 'form-horizontal')
+    ->addChild(
+        $factory->makeFormInput('Email', 'email', 'inputEmail3', 'Email')
+            ->setAttribute('value', '{{ model.email }}');
+    )->addChild(
+        $factory->makeFormInput('Confirm Email', 'email', 'inputEmail2', 'Email Again')
+            ->setAttribute('value', '{{ model.email_confirm }}');
+    )->addChild(
+        $factory->makeButton('Sign In')
+    );
+```
+
 ## Todo
 
 Filling out the Bootstrap Factory more
