@@ -165,4 +165,13 @@ abstract class Element
 
         return $content;
     }
+
+    /**
+     * @param int $position
+     * 
+     * @return Element
+     */
+    public function getChild($position) {
+        return $this->children[intval($position)];
+    }
 }

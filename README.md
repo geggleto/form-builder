@@ -135,17 +135,24 @@ $form = (new Form())
 
 ### Or maybe you want to output the forms to html files.
 ```php
+
+$factory = new Factory(); //bootstrap factory
+
+$email = $factory->makeFormInput('Email', 'email', 'inputEmail3', 'Email');
+
+//Traverse the Structure to get the Input Element
+$email->getChild(1)->getChild(0)->setAttribute('value', '{{ model.email }}');
+
 $form = (new Form())
     ->setAttribute('class', 'form-horizontal')
     ->addChild(
-        $factory->makeFormInput('Email', 'email', 'inputEmail3', 'Email')
-            ->setAttribute('value', '{{ model.email }}');
+        $email
     )->addChild(
-        $factory->makeFormInput('Confirm Email', 'email', 'inputEmail2', 'Email Again')
-            ->setAttribute('value', '{{ model.email_confirm }}');
+        $factory->makeFormInput('Password', 'password', 'inputPassword3', 'Password')
     )->addChild(
         $factory->makeButton('Sign In')
     );
+
     
 $formHtml = $form->render();    
 //Write it to disk... could be written to phtml or even twig
