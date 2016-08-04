@@ -53,10 +53,11 @@ class Factory
     /**
      * @param $text
      * @param string $buttonDivCss
-     * 
+     * @param string $onClickEvent
+     *
      * @return Element
      */
-    public function makeButton($text, $buttonDivCss = 'col-sm-offset-2 col-sm-10') {
+    public function makeButton($text, $buttonDivCss = 'col-sm-offset-2 col-sm-10', $onClickEvent = '') {
         return (new Div())
             ->setAttribute('class', 'form-group')
             ->addChild(
@@ -66,6 +67,7 @@ class Factory
                         (new Button())
                             ->setAttribute('type', 'submit')
                             ->setAttribute('class', 'btn btn-default')
+                            ->setAttribute('onclick', $onClickEvent)
                             ->setInnerHtml($text)
                     )
             );

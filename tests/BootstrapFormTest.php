@@ -30,7 +30,7 @@ class BootstrapFormTest extends \PHPUnit_Framework_TestCase
 </div>
 <div class="form-group" >
 <div class="col-sm-offset-2 col-sm-10" >
-<button type="submit" class="btn btn-default" >Sign In</button>
+<button type="submit" class="btn btn-default" onclick="" >Sign In</button>
 </div>
 </div>
 </form>';
