@@ -13,24 +13,22 @@ use Geggleto\Forms\Input;
 
 $container = $app->getContainer();
 $container['loginForm'] = function ($c) {
-   return (new Form())
-           ->setId("loginForm")
-           ->setMethod("post")
-           ->addChild(
-               (new Input())
-                   ->setName("username")
-                   ->setAttributes(
-                   array(
-                       "name" => "username",
-                       "type" => "text"
-                   ))
-           )->addChild(
-               (new Input())->setAttributes(
-                   array(
-                       "name" => "password",
-                       "type" => "password"
-                   ))
-           );
+    $generator = $c['BootstrapGenerator'];
+    
+    return $generator->generate([
+        [
+            'label' => 'Email',
+            'type' => 'email',
+            'id' => 'inputEmail3',
+            'placeholder' => 'Email'
+        ],
+        [
+            'label' => 'Password',
+            'type' => 'password',
+            'id' => 'inputPassword3',
+            'placeholder' => 'Password'
+        ],
+    ], 'Sign In');
 };
 
 ```
