@@ -51,7 +51,7 @@ abstract class Element
         foreach ($attributes as $k => $v) {
             $this->setAttribute($k, $v); //force the (string) conversion
         }
-        
+
         return $this;
     }
 
@@ -68,7 +68,7 @@ abstract class Element
 
     /**
      * @param $name
-     * 
+     *
      * @return mixed
      */
     public function getAttribute($name, $default = '') {
@@ -185,7 +185,7 @@ abstract class Element
 
             //check this element
             $name = $child->getAttribute('name');
-            
+
             if (!empty($name) && in_array($name, $keys)) {
                 $child->setValue($data[$child->getAttribute('name')]);
             }
@@ -216,7 +216,7 @@ abstract class Element
 
     /**
      * @param int $position
-     * 
+     *
      * @return Element
      */
     public function getChild($position) {
