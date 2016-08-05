@@ -13,7 +13,18 @@ class Option extends Element
 {
     public function __construct()
     {
-        parent::__construct();
-        $this->elementType = 'option';
+        parent::__construct('option');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->setAttribute('value', $value);
+
+        return $this;
     }
 }

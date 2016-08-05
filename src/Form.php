@@ -16,9 +16,7 @@ class Form extends Element
      */
     public function __construct()
     {
-        parent::__construct();
-        
-        $this->elementType = 'form';
+        parent::__construct('form');
     }
 
     /**
@@ -51,4 +49,16 @@ class Form extends Element
         return $this;
     }
     
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->setInnerHtml($value);
+
+        return $this;
+    }
 }

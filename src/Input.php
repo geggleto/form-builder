@@ -16,9 +16,7 @@ class Input extends Element
      */
     public function __construct()
     {
-        parent::__construct();
-
-        $this->elementType = 'input';
+        parent::__construct('input');
     }
 
     /**
@@ -27,11 +25,11 @@ class Input extends Element
     public function renderStartTag()
     {
         $stringAttributes = "";
-        foreach ($this->attributes as $name => $value) {
+        foreach ($this->getAttributes() as $name => $value) {
             $stringAttributes .= $name.'="'.$value.'" ';
 
         }
-        return '<'.$this->elementType.' '.$stringAttributes.'/>';    }
+        return '<'.$this->getElementType().' '.$stringAttributes.'/>';    }
 
     /**
      * @return string
@@ -39,5 +37,17 @@ class Input extends Element
     public function renderEndTag()
     {
         return '';
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->setAttribute('value', $value);
+
+        return $this;
     }
 }

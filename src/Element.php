@@ -12,25 +12,26 @@ namespace Geggleto\Forms;
 abstract class Element
 {
     /** @var array */
-    protected $attributes;
+    private $attributes;
 
     /** @var string */
-    protected $elementType;
+    private $elementType;
 
     /** @var array */
-    protected $children;
+    private $children;
 
     /** @var string */
-    protected $innerHtml;
+    private $innerHtml;
 
     /**
      * HtmlElement constructor.
      */
-    public function __construct()
+    public function __construct($elementType)
     {
         $this->attributes = array();
         $this->children = array();
         $this->innerHtml = '';
+        $this->elementType = $elementType;
     }
 
     /**
@@ -70,8 +71,12 @@ abstract class Element
      * 
      * @return mixed
      */
-    public function getAttribute($name) {
-        return $this->attributes[(string)$name];
+    public function getAttribute($name, $default = '') {
+        if (isset($this->attributes[(string)$name])) {
+            return $this->attributes[(string)$name];
+        } else {
+            return $default;
+        }
     }
 
     /**
@@ -167,6 +172,29 @@ abstract class Element
     }
 
     /**
+     * @param array $data
+     * @return $this
+     */
+    public function setData(array $data) {
+
+        $keys = array_keys($data);
+
+        foreach ($this->children as $child) {
+            /** @var $child Element */
+            $child->setData($data); //Recurse through the structure
+
+            //check this element
+            $name = $child->getAttribute('name');
+            
+            if (!empty($name) && in_array($name, $keys)) {
+                $child->setValue($data[$child->getAttribute('name')]);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @param int $position
      * 
      * @return Element
@@ -174,4 +202,23 @@ abstract class Element
     public function getChild($position) {
         return $this->children[intval($position)];
     }
+
+    /**
+     * @return array
+     */
+    public function getChildren() {
+        return $this->children;
+    }
+
+
+    public function getElementType() {
+        return $this->elementType;
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    abstract public function setValue($value);
 }

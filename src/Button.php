@@ -16,8 +16,19 @@ class Button extends Element
      */
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct('button');
+    }
 
-        $this->elementType = 'button';
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->setInnerHtml($value);
+        
+        return $this;
     }
 }

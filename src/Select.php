@@ -13,7 +13,26 @@ class Select extends Element
 {
     public function __construct()
     {
-        parent::__construct();
-        $this->elementType = 'select';
+        parent::__construct('select');
+    }
+
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        //Recurse through all option values
+        foreach($this->getChildren() as $child) {
+            /** @var $child Element */
+            if ($child->getElementType() == 'option') {
+                if ($child->getAttribute('value') == $value) {
+                    $child->setAttribute('checked', 'checked');
+                }
+            }
+        }
+
+        return $this;
     }
 }

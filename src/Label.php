@@ -16,8 +16,18 @@ class Label extends Element
      */
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct('label');
+    }
 
-        $this->elementType = 'label';
+    /**
+     * @param string $value
+     *
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->setInnerHtml($value);
+
+        return $this;
     }
 }
