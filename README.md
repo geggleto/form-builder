@@ -158,6 +158,24 @@ $formHtml = $form->render();
 //Write it to disk... could be written to phtml or even twig
 ```
 
+## Data Binding
+It is now possible to bind data to your form.
+
+```php
+$form = (new Form())
+    ->setAttribute('class', 'form-horizontal')
+    ->addChild(
+        $email
+    )->addChild(
+        $password
+    )->addChild(
+        $factory->makeButton('Sign In')
+    )->setData([
+        "email" => 'test@test.com',
+        "password" => "123456"
+    ]);
+```
+
 ## Todo
 
 Filling out the Bootstrap Factory more
