@@ -12,10 +12,12 @@ namespace Geggleto\Forms\Factory\Bootstrap;
 use Geggleto\Forms\Button;
 use Geggleto\Forms\Div;
 use Geggleto\Forms\Element;
+use Geggleto\Forms\Factory\FactoryInterface;
+use Geggleto\Forms\Form;
 use Geggleto\Forms\Input;
 use Geggleto\Forms\Label;
 
-class Factory
+class Factory implements FactoryInterface
 {
     
     /**
@@ -72,4 +74,12 @@ class Factory
                     )
             );
     }
+
+    /**
+     * @return Form
+     */
+    public function makeForm() {
+        return (new Form())->setAttribute('class', 'form-horizontal');
+    }
+
 }
