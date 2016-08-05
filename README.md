@@ -180,6 +180,43 @@ $form = (new Form())
 
 Validation should ultimately be handled by your UI and your API.
 
+## Generators
+
+It is now possible to create forms via an array 
+```php
+       $factory = new Factory(); //bootstrap factory
+        
+        $generator = new Generator($factory);
+        $form2 = $generator->generate([
+            [
+                'label' => 'Email',
+                'type' => 'email',
+                'id' => 'inputEmail3',
+                'placeholder' => 'Email'
+            ],
+            [
+                'label' => 'Password',
+                'type' => 'password',
+                'id' => 'inputPassword3',
+                'placeholder' => 'Password'
+            ],
+        ], 'Sign In');
+        
+        // is equivilant too
+        
+
+        $form = (new Form())
+            ->setAttribute('class', 'form-horizontal')
+            ->addChild(
+                $factory->makeFormInput('Email', 'email', 'inputEmail3', 'Email')
+            )->addChild(
+                $factory->makeFormInput('Password', 'password', 'inputPassword3', 'Password')
+            )->addChild(
+                $factory->makeButton('Sign In')
+            );        
+        
+```
+
 
 ## Todo
 
