@@ -220,4 +220,7 @@ It is now possible to create forms via an array
 
 ## Todo
 
-Filling out the Bootstrap Factory more
+ - [ ] Add more Html Elements
+ - [ ] Add Plugin to AJAXify the form
+ - [ ] Add Plugin to use Vue.JS for binding
+
