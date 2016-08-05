@@ -195,6 +195,26 @@ abstract class Element
     }
 
     /**
+     * @param $type
+     *
+     * @return array
+     */
+    public function getAllElementsOfType($type) {
+        $elements = array();
+
+        if ($this->getElementType() == $type) {
+            $elements[] = $this;
+        }
+
+        foreach ($this->children as $child) {
+            /** @var $child Element */
+            $elements = array_merge($elements , $child->getAllElementsOfType($type));
+        }
+
+        return $elements;
+    }
+
+    /**
      * @param int $position
      * 
      * @return Element
@@ -221,4 +241,6 @@ abstract class Element
      * @return $this
      */
     abstract public function setValue($value);
+
+
 }
