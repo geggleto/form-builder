@@ -3,6 +3,11 @@
 This object oriented form builder will allow you to share form objects between different pages in your project.
 Ideally via some form of dependency injection.
 
+## Why?
+
+Lazy. That's why.
+This package hopefully will bring us one step closer to fully interoperable systems.
+
 ## Usage
 
 For instance in Slim you can do the following.
