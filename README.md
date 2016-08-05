@@ -220,7 +220,12 @@ It is now possible to create forms via an array
 
 ## Todo
 
+### v1 goals
  - [ ] Add more Html Elements
  - [ ] Add Plugin to AJAXify the form
  - [ ] Add Plugin to use Vue.JS for binding
+
+
+### v2 Goals
+- [ ] Figure out a way to populate select options for the generator
 
