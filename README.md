@@ -176,6 +176,11 @@ $form = (new Form())
     ]);
 ```
 
+## Validation
+
+Validation should ultimately be handled by your UI and your API.
+
+
 ## Todo
 
 Filling out the Bootstrap Factory more

@@ -26,6 +26,6 @@
     "test": [
       "@phpunit"
     ],
-    "phpunit": "call vendor/bin/phpunit --bootstrap tests/bootstrap.php tests"
+    "phpunit": "phpunit --bootstrap tests/bootstrap.php tests"
   }
 }
