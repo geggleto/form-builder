@@ -16,6 +16,7 @@ use Geggleto\Forms\Factory\FactoryInterface;
 use Geggleto\Forms\Form;
 use Geggleto\Forms\Input;
 use Geggleto\Forms\Label;
+use Geggleto\Forms\Select;
 
 class Factory implements FactoryInterface
 {
@@ -27,29 +28,67 @@ class Factory implements FactoryInterface
      * @param $placeholder
      * @param $labelCss
      * @param $inputDivCss
+     * @param array $data
      *
      * @return Element
      */
-    public function makeFormInput($label, $type, $id, $placeholder, $labelCss = 'col-sm-2 control-label', $inputDivCss = 'col-sm-10') {
+    public function makeFormInput($label, $type, $id, $placeholder, array $data = [], $labelCss = 'col-sm-2 control-label',
+                                  $inputDivCss = 'col-sm-10') {
+
         return (new Div())
             ->setAttribute('class', 'form-group')
             ->addChild(
-                (new Label())
-                    ->setAttribute('for', $id)
-                    ->setAttribute('class', $labelCss)
-                    ->setInnerHtml($label)
+                $this->makeLabel($id, $labelCss, $label)
             )
             ->addChild(
-                (new Div())
-                    ->setAttribute('class', $inputDivCss)
-                    ->addChild(
-                        (new Input())
-                            ->setAttribute('type', $type)
-                            ->setAttribute('class', 'form-control')
-                            ->setAttribute('id', $id)
-                            ->setAttribute('placeholder', $placeholder)
-                    )
+                $this->makeInput($inputDivCss, $type, $id, $placeholder, $data)
             );
+    }
+
+    /**
+     * @param $inputDivCss
+     * @param $type
+     * @param $id
+     * @param $placeholder
+     * @param array $options
+     * @return Element
+     *
+     */
+    protected function makeInput($inputDivCss, $type, $id, $placeholder, array $options = []) {
+
+        if ($type != 'select') {
+            return (new Div())
+                ->setAttribute('class', $inputDivCss)
+                ->addChild(
+                    (new Input())
+                        ->setAttribute('type', $type)
+                        ->setAttribute('class', 'form-control')
+                        ->setAttribute('id', $id)
+                        ->setAttribute('placeholder', $placeholder)
+                );
+        } else {
+            return (new Div())
+                ->setAttribute('class', $inputDivCss)
+                ->addChild(
+                    (new Select())
+                        ->setAttribute('class', 'form-control')
+                        ->setAttribute('id', $id)
+                        ->setChildren($options)
+                );
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $labelCss
+     * @param $label
+     * @return Element
+     */
+    protected function makeLabel($id, $labelCss, $label) {
+        return (new Label())
+            ->setAttribute('for', $id)
+            ->setAttribute('class', $labelCss)
+            ->setInnerHtml($label);
     }
 
     /**

@@ -12,6 +12,7 @@ namespace Forms\Test;
 use Geggleto\Forms\Factory\Bootstrap\Factory;
 use Geggleto\Forms\Form;
 use Geggleto\Forms\Generator\Generator;
+use Geggleto\Forms\Select;
 
 class GeneratorHtmlTest extends \PHPUnit_Framework_TestCase
 {
@@ -25,6 +26,18 @@ class GeneratorHtmlTest extends \PHPUnit_Framework_TestCase
             )->addChild(
                 $factory->makeFormInput('Password', 'password', 'inputPassword3', 'Password')
             )->addChild(
+                $factory->makeFormInput('testSelect', 'select', 'select4', '', [
+                    [
+                        'name' => 'one',
+                        'value' => 1
+                    ],
+                    [
+                        'name' => 'two',
+                        'value' => 2
+                    ]
+                ])
+            )
+            ->addChild(
                 $factory->makeButton('Sign In')
             );
         
@@ -42,7 +55,28 @@ class GeneratorHtmlTest extends \PHPUnit_Framework_TestCase
                 'id' => 'inputPassword3',
                 'placeholder' => 'Password'
             ],
+            [
+                'label' => 'testSelect',
+                'type' => 'select',
+                'id' => 'select4',
+                'placeholder' => '',
+                'options' => [
+                    [
+                        'name' => 'one',
+                        'value' => 1
+                    ],
+                    [
+                        'name' => 'two',
+                        'value' => 2
+                    ],
+                ]
+            ]
+
         ], 'Sign In');
+
+        /**
+         *
+         */
 
 
         $this->assertEquals($form->render(), $form2->render());

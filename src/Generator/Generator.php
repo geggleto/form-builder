@@ -9,9 +9,8 @@
 namespace Geggleto\Forms\Generator;
 
 
-use Geggleto\Forms\Factory\Bootstrap\Factory;
+use Geggleto\Forms\Element;
 use Geggleto\Forms\Factory\FactoryInterface;
-use Geggleto\Forms\Form;
 
 class Generator
 {
@@ -32,17 +31,20 @@ class Generator
     /**
      * @param $data
      *
-     * @return Form
+     * @return Element
      */
     public function generate(array $data, $btn= '') {
         $form = $this->factory->makeForm();
 
-        foreach ($data as $item) {
+        foreach ($data as $element) {
+            $options = isset($element['options'])?$element['options']:[];
+
             $form->addChild($this->factory->makeFormInput(
-                $item['label'],
-                $item['type'],
-                $item['id'],
-                $item['placeholder']
+                $element['label'],
+                $element['type'],
+                $element['id'],
+                $element['placeholder'],
+                $options
             ));
         }
         

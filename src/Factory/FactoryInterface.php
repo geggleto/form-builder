@@ -18,12 +18,13 @@ interface FactoryInterface
      * @param $type
      * @param $id
      * @param $placeholder
+     * @param array $data
      * @param string $labelCss
      * @param string $inputDivCss
-     *
      * @return Element
      */
-    public function makeFormInput($label, $type, $id, $placeholder, $labelCss = 'col-sm-2 control-label', $inputDivCss = 'col-sm-10');
+    public function makeFormInput($label, $type, $id, $placeholder, array $data = [], $labelCss = 'col-sm-2 control-label', $inputDivCss = 'col-sm-10');
+
 
     /**
      * @param $text

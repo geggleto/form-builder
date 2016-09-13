@@ -35,4 +35,18 @@ class Select extends Element
 
         return $this;
     }
+
+    public function setChildren(array $options) {
+        $this->clearChildren();
+
+        foreach ($options as $option) {
+            $this->addChild(
+                (new Option())
+                    ->setValue($option['value'])
+                    ->setInnerHtml($option['name'])
+            );
+        }
+
+        return $this;
+    }
 }

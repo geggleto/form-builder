@@ -230,6 +230,10 @@ abstract class Element
         return $this->children;
     }
 
+    public function clearChildren() {
+        $this->children = [];
+    }
+
 
     public function getElementType() {
         return $this->elementType;
