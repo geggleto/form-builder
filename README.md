@@ -36,6 +36,11 @@ $container['loginForm'] = function ($c) {
     ], 'Sign In');
 };
 
+//Build Dynamic Form
+$app->get('/login', function ($req, $res, $args) {
+    return $res->write($this->loginForm->render());
+});
+
 ```
 
 
@@ -245,8 +250,20 @@ $form2 = $generator->generate([
 ```
 
 
+### Write forms to Local files
+`composer persist <input form array> <output file>`
+
+Example: 
+`composer persist ./tests/array.php ./tests/form.php`
+
+the composer command is an alias for:
+`php src/command/persistForm.php`
+
+
+
+
 ## Todo
 
 ### v1 goals
  - [X] Figure out a way to populate select options for the generator
-
+ - [X] Add command line composer command to render an array to a file

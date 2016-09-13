@@ -26,6 +26,7 @@
     "test": [
       "@phpunit"
     ],
-    "phpunit": "phpunit --bootstrap tests/bootstrap.php tests"
+    "phpunit": "phpunit --bootstrap tests/bootstrap.php tests",
+    "persist" : "php src/command/persistForm.php"
   }
 }
