@@ -10,7 +10,7 @@ This package hopefully will bring us one step closer to fully interoperable syst
 
 ## Usage
 
-```
+```php
 $builder = new Builder(new Factory());
 
 $schema = []; 
