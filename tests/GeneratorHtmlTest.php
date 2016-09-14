@@ -9,6 +9,7 @@
 namespace Forms\Test;
 
 
+use Geggleto\Forms\Element;
 use Geggleto\Forms\Factory\Bootstrap\Factory;
 use Geggleto\Forms\Form;
 use Geggleto\Forms\Generator\Generator;
@@ -40,7 +41,13 @@ class GeneratorHtmlTest extends \PHPUnit_Framework_TestCase
             ->addChild(
                 $factory->makeButton('Sign In')
             );
-        
+
+        $elements = $form->getAllElementsOfType('input');
+        /** @var $input Element */
+        foreach ($elements as $input) {
+            $input->setAttribute('value', isset($element['value'])?$element['value']:"");
+        }
+
         $generator = new Generator($factory);
         $form2 = $generator->generate([
             [

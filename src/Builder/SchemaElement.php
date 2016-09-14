@@ -26,6 +26,8 @@ class SchemaElement
     /** @var string */
     protected $options;
 
+    /** @var  string */
+    protected $value;
 
     /**
      * SchemaElement constructor.
@@ -129,6 +131,24 @@ class SchemaElement
         return $this;
     }
 
+    /**
+     * @return string
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * @param string $value
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
 
     public function toArray() {
 
@@ -137,6 +157,7 @@ class SchemaElement
             'type' => $this->getType(),
             'id' => $this->getId(),
             'placeholder' => $this->getPlaceholder(),
+            'value' => $this->getValue(),
             'options' => $this->getOptions()
         ];
     }

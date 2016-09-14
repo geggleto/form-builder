@@ -39,13 +39,24 @@ class Generator
         foreach ($data as $element) {
             $options = isset($element['options'])?$element['options']:[];
 
-            $form->addChild($this->factory->makeFormInput(
+            $formElement = $this->factory->makeFormInput(
                 $element['label'],
                 $element['type'],
                 $element['id'],
                 $element['placeholder'],
                 $options
-            ));
+            );
+
+            if ($element['type'] == 'text' || $element['type'] == 'password' || $element['type'] == 'email' ) {
+                $elements = $formElement->getAllElementsOfType('input');
+
+                /** @var $input Element */
+                foreach ($elements as $input) {
+                    $input->setAttribute('value', isset($element['value'])?$element['value']:"");
+                }
+            }
+
+            $form->addChild($formElement);
         }
         
         $form->addChild($this->factory->makeButton($btn));

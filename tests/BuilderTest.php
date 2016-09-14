@@ -52,19 +52,22 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
                 'label' => 'Username',
                 'type' => 'text',
                 'id' => 'username',
-                'placeholder' => 'Username'
+                'placeholder' => 'Username',
+                'value' => ''
             ],
             [
                 'label' => 'Password',
                 'type' => 'password',
                 'id' => 'password',
-                'placeholder' => 'Password'
+                'placeholder' => 'Password',
+                'value' => ''
             ],
             [
                 'label' => 'Domain',
                 'type' => 'select',
                 'id' => 'domain',
                 'placeholder' => '',
+                'value' => '',
                 'options' => [
                     [ 'name' => 'one', 'value' => 1 ],
                     [ 'name' => 'two', 'value' => 2 ],
