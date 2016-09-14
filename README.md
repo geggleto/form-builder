@@ -1,12 +1,19 @@
 # Html Form Builder
 
-This object oriented form builder will allow you to share form objects between different pages in your project.
-Ideally via some form of dependency injection.
+Make HTML Forms, Easy.
+
+## Factories
+
+ - Bootstrap 3
+ 
+But if you want to use something else feel free to build and PR it.
+
 
 ## Why?
 
 Lazy. That's why.
 This package hopefully will bring us one step closer to fully interoperable systems.
+
 
 ## Usage
 
