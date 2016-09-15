@@ -13,7 +13,6 @@ use Geggleto\Forms\Element;
 use Geggleto\Forms\Factory\Bootstrap\Factory;
 use Geggleto\Forms\Form;
 use Geggleto\Forms\Generator\Generator;
-use Geggleto\Forms\Select;
 
 class GeneratorHtmlTest extends \PHPUnit_Framework_TestCase
 {
@@ -80,11 +79,6 @@ class GeneratorHtmlTest extends \PHPUnit_Framework_TestCase
             ]
 
         ], 'Sign In');
-
-        /**
-         *
-         */
-
 
         $this->assertEquals($form->render(), $form2->render());
     }

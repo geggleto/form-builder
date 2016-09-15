@@ -80,4 +80,11 @@ class BuilderTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($contents2, $contents);
     }
+
+    public function tearDown()
+    {
+        if (file_exists($this->target)) {
+            unlink($this->target);
+        }
+    }
 }
