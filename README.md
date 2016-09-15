@@ -11,14 +11,17 @@ But if you want to use something else feel free to build and PR it.
 
 ## Why?
 
-Lazy. That's why.
-This package hopefully will bring us one step closer to fully interoperable systems.
+Decouple your UI from flavour of the month CSS frameworks.
+
+## How?
+
+Have a new favourite CSS framework?  Write your own Factory!
 
 
 ## Usage
 
 ```php
-$builder = new Builder(new Factory());
+$builder = new Builder(new Factory()); //default is Bootstrap 3
 
 $schema = []; 
 
