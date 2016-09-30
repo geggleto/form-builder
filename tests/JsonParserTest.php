@@ -3,26 +3,26 @@
  * Created by PhpStorm.
  * User: Glenn
  * Date: 2016-09-30
- * Time: 9:52 AM
+ * Time: 10:49 AM
  */
 
 namespace Forms\Test;
 
 
-use Geggleto\Forms\Schema\CsvParser;
+use Geggleto\Forms\Schema\JsonParser;
 
-class CsvParserTest extends \PHPUnit_Framework_TestCase
+class JsonParserTest extends \PHPUnit_Framework_TestCase
 {
     public function testParse() {
-        $parser = new CsvParser();
-        $array = $parser->parseSchemaToArray(__DIR__."/form.csv");
+        $parser = new JsonParser();
+        $array = $parser->parseSchemaToArray(__DIR__."/form.json");
 
         $expected = [
             [
-            'label' => 'Email',
-            'type' => 'email',
-            'id' => 'inputEmail3',
-            'placeholder' => 'Email'
+                'label' => 'Email',
+                'type' => 'email',
+                'id' => 'inputEmail3',
+                'placeholder' => 'Email'
             ], [
                 'label' => 'Password',
                 'type' => 'password',

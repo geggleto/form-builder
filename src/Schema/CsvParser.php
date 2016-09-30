@@ -13,13 +13,9 @@ namespace Geggleto\Forms\Schema;
  *
  * @package Geggleto\Forms\Schema
  */
-class CsvParser
+class CsvParser implements Parser
 {
-    public function __construct()
-    {
-    }
-
-    public function parseSchemaCsvToArray($file = '') {
+    public function parseSchemaToArray($file = '') {
         if (!file_exists($file)) {
             throw new \InvalidArgumentException("Schema File Not Found");
         }

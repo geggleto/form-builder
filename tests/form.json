@@ -1,0 +1,13 @@
+[
+  {
+    "label": "Email",
+    "type": "email",
+    "id": "inputEmail3",
+    "placeholder": "Email"
+  }, {
+    "label": "Password",
+    "type": "password",
+    "id": "inputPassword3",
+    "placeholder": "Password"
+  }
+]

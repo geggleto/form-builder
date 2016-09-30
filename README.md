@@ -17,13 +17,19 @@ Decouple your UI from flavour of the month CSS frameworks.
 
 Have a new favourite CSS framework?  Write your own Factory!
 
-### CSV Parser
+### Csv Parser
 ```php
 $builder = new Builder(new Factory()); //default is Bootstrap 3
 $root = $builder->build((new CsvParser())->parseSchemaCsvToArray("form.csv"), "Login");
 $builder->write($rootElement, './userLoginForm.php');
 ```
 
+### Json Parser
+```php
+$builder = new Builder(new Factory()); //default is Bootstrap 3
+$root = $builder->build((new JsonParser())->parseSchemaCsvToArray("form.json"), "Login");
+$builder->write($rootElement, './userLoginForm.php');
+```
 
 ### Procedural
 
