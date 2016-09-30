@@ -17,13 +17,6 @@ Decouple your UI from flavour of the month CSS frameworks.
 
 Have a new favourite CSS framework?  Write your own Factory!
 
-## Usage via File
-
-
-#### form.csv
-"Email","email","inputEmail3","Email"
-"Password","password","inputPassword3","Password"
-
 ### CSV Parser
 ```php
 $builder = new Builder(new Factory()); //default is Bootstrap 3
@@ -32,7 +25,7 @@ $builder->write($rootElement, './userLoginForm.php');
 ```
 
 
-## Usage Procedural
+### Procedural
 
 ```php
 $builder = new Builder(new Factory()); //default is Bootstrap 3
