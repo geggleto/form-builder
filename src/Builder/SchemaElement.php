@@ -6,7 +6,7 @@
  * Time: 9:29 AM
  */
 
-namespace Geggleto\Forms;
+namespace Geggleto\Forms\Builder;
 
 
 class SchemaElement

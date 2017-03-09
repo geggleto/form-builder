@@ -9,7 +9,7 @@
 namespace Forms\Test;
 
 
-use Geggleto\Forms\Builder;
+use Geggleto\Forms\Builder\Builder;
 use Geggleto\Forms\Factory\Bootstrap\Factory;
 
 class BuilderTest extends \PHPUnit_Framework_TestCase
