@@ -6,7 +6,7 @@
  * Time: 9:14 AM
  */
 
-namespace Geggleto\Forms;
+namespace Geggleto\Forms\Builder;
 
 
 use Geggleto\Forms\Element;
